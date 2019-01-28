@@ -70,9 +70,7 @@ $(document).ready(function (){
     var correct = 0;
     var wrong = 0;
     var count = 7;
-    var unanswered = 0;
-    var userGuess = "";
-    var clockrunning = false;
+
     var intervalID;
     var randomQuestion;
     var randomPick;
@@ -80,7 +78,6 @@ $(document).ready(function (){
     var gamelength = 0;
     var gamequestions = triviaQuestions.length;
     var correctanswer;
-    var fuckthis = triviaQuestions;
 
 
 
@@ -183,35 +180,30 @@ $(document).ready(function (){
             console.log(event);
             //correct guess or wrong guess outcomes
                 if (event == correctanswer) {
-                    
+                    showanswer();
                     correct++;
-                    $("#quote").html("<img src=" + randomPick.img + ">")
-                    $("#authorname").html("<h2>" + randomPick.author + "</h2>");
-                    console.log(correct);
-                    console.log(wrong);
-                    setTimeout(nextquestion, 2000);
-                    $("#questionblock").show();
-                    $("#correctAnswer").show();
-                    $("#quote").show();
-                    $("#authorname").show();
+
+              
 
 
                 } else {
-                    // for(var i = 0; i < randomQuestion.length; i++) {
-                    //     newArray.push(randomQuestion[i]);
+
                     
                     wrong++;
+                    showanswer();
                     // userGuess="";
-                    $("#quote").html("<img src=" + randomPick.img + ">")
-                    $("#authorname").html("<h2>" + randomPick.author + "</h2>");
-                    setTimeout(nextquestion, 3000);
-                    $("#questionblock").show();
-                    $("#correctAnswer").show();
-                    $("#quote").show();
-                    $("#authorname").show();
+
                 }
     })
-    
+    function showanswer () {
+        $("#quote").html("<img src=" + randomPick.img + ">")
+        $("#authorname").html("<h2>" + randomPick.author + "</h2>");
+        setTimeout(nextquestion, 10000);
+        $("#questionblock").show();
+        $("#correctAnswer").show();
+        $("#quote").show();
+        $("#authorname").show();
+    }
 
     function nextquestion () {
         if (gamelength === gamequestions ) {

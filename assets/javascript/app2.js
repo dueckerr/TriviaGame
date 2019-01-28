@@ -141,9 +141,10 @@ $(document).ready(function (){
             clearInterval(intervalID);
             $("#questionblock").show();
             $("#correctAnswer").show();
+            $("#quote").html("<img src=" + randomPick.img + ">")
             $("#quote").show();
-            nextquestion();
             $("#authorname").show();
+            showanswer();
         }
         
         // Pick random question
@@ -185,33 +186,28 @@ $(document).ready(function (){
                 if (event == correctanswer) {
                     
                     correct++;
-                    $("#quote").html("<img src=" + randomPick.img + ">")
-                    $("#authorname").html("<h2>" + randomPick.author + "</h2>");
-                    console.log(correct);
-                    console.log(wrong);
-                    setTimeout(nextquestion, 2000);
-                    $("#questionblock").show();
-                    $("#correctAnswer").show();
-                    $("#quote").show();
-                    $("#authorname").show();
-
-
-                } else {
-                    // for(var i = 0; i < randomQuestion.length; i++) {
-                    //     newArray.push(randomQuestion[i]);
+                    showanswer();
                     
-                    wrong++;
-                    // userGuess="";
-                    $("#quote").html("<img src=" + randomPick.img + ">")
-                    $("#authorname").html("<h2>" + randomPick.author + "</h2>");
-                    setTimeout(nextquestion, 3000);
-                    $("#questionblock").show();
-                    $("#correctAnswer").show();
-                    $("#quote").show();
-                    $("#authorname").show();
-                }
-    })
-    
+                } else {  
+                        wrong++;
+                        showanswer();
+                    }
+                })
+                
+    function showanswer(){
+                    
+                $("#quote").html("<img src=" + randomPick.img + ">")
+                $("#authorname").html("<h2>" + randomPick.author + "</h2>");
+                console.log(wrong);
+                console.log(correct);
+                $("#questionblock").show();
+                $("#correctAnswer").show();
+                $("#quote").show();
+                $("#authorname").show();
+                console.log("fuck")
+
+                nextquestion();
+    }
 
     function nextquestion () {
         if (gamelength === gamequestions ) {
@@ -222,6 +218,8 @@ $(document).ready(function (){
             $("#correctAnswer").hide();
             $("#quote").show();
             $("#authorname").show();
+            console.log("fuck1")
+
         questions();
         // newArray.push(randomPick);
         // triviaQuestions.splice(randomQuestion,1)
@@ -246,6 +244,7 @@ $(document).ready(function (){
         $(".questions").show();
         $(".choices").show();
         newGame();
+        console.log(fuck)
     })
 
 
